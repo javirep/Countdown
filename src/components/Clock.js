@@ -13,14 +13,14 @@ export default class Clock extends Component {
         hours: 0,
         min: 0,
         seconds: 0,
-        deadline: new Date(),
+        deadline: new Date("2020-12-25"),
         loading: true
     }
 
     async componentDidMount () {
 
         const {data} = await axios.get("http://worldtimeapi.org/api/timezone/Europe/Madrid")
-        const time = Math.floor((Date.parse(this.state.deadline) - Date.parse(data.datetime) ) / 1000 + 5) // Seconds left till deadline 
+        const time = Math.floor((Date.parse(this.state.deadline) - Date.parse(data.datetime) ) / 1000) // Seconds left till deadline 
 
         this.setState({
             time,
